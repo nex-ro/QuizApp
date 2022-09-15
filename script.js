@@ -29,6 +29,50 @@ const Question =[
         ]
         
         
+    },
+    {
+        Question:"Sebutkan produk indonesia dibawah ini?",
+        Choice:[
+            {pilihan:"TOYOYA",status:false},
+            {pilihan:"Indomie",status:true},
+            {pilihan:"Mixie",status:false},
+            {pilihan:"Pizza Hut",status:false}            
+        ]
+        
+        
+    },
+    {
+        Question:"Bagian pada kendaraan bermotor yang digunakan sebagai pembuangan gas disebut?",
+        Choice:[
+            {pilihan:"Spion",status:false},
+            {pilihan:"Knalpot",status:true},
+            {pilihan:"Roda",status:false},
+            {pilihan:"Rem",status:false}            
+        ]
+        
+        
+    },
+    {
+        Question:"Negara terluas keempat di dunia adalah?",
+        Choice:[
+            {pilihan:"Indonesia",status:false},
+            {pilihan:"Amerika",status:true},
+            {pilihan:"Australia",status:false},
+            {pilihan:"India",status:false}            
+        ]
+        
+        
+    },
+    {
+        Question:"Sebutkan produk indonesia dibawah ini? kecuali",
+        Choice:[
+            {pilihan:"SilverQuin",status:false},
+            {pilihan:"Grab",status:true},
+            {pilihan:"JCO",status:false},
+            {pilihan:"Indomie",status:false}            
+        ]
+        
+        
     }
 ]
 // SHUFFLE BUAT Question
@@ -80,20 +124,19 @@ btnStart.addEventListener("click",function(){
 // ketika next di tekan
 
 btnNext.addEventListener("click",function(){
-    
+    Noberapa++
     pemeriksaanBenar(pilihanHuman)
     btnNext.classList.add("hide")
     btnChoice.forEach(button => {
         button.classList.remove("dipilih")
     });
     daftarChoice()
-    updateUI(Noberapa,Quest,Choices)
-    Noberapa++
     if(Noberapa == Question.length){
         tampilkanNilai(nilai)
-        console.log("selesai")
         return
     }
+    updateUI(Noberapa,Quest,Choices)
+    
 })
 
 
@@ -144,11 +187,9 @@ function daftarChoice(){
 
 function pemeriksaanBenar(data){
     if(data.dataset.status=="true"){
-        console.log("betul")
         nilai +=point
     }
     else{
-        console.log("salah")
     }
     
 }
@@ -158,11 +199,11 @@ function tampilkanNilai(nilai){
     });
     tanya.innerHTML=`Nilai kamu adalah`
     const showNilai=document.createElement("h1")
-    const isiNilai =document.createTextNode(nilai)
+    const isiNilai =document.createTextNode(Math.floor(nilai))
     showNilai.appendChild(isiNilai)
+
     showNilai.classList.add("nilai")
     Container.appendChild(showNilai)
-    console.log(showNilai)
     
 
 }
